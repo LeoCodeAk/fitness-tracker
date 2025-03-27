@@ -1,0 +1,7 @@
+1. Want user authentication (registration, login)
+2. Dashboartd with fitness metrics
+3. Workout tracking..
+4. Meal logging
+5. Goal setting and progress tracking
+6. Reporting/Analytics
+
