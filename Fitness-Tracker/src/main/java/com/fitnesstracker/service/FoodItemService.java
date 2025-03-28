@@ -40,4 +40,15 @@ public class FoodItemService {
         return lowCalorieFoods;
     }
 
+    public List<FoodItem> findCaloriesMoreThanProtein(int maxCalories) {
+        if(maxCalories <= 0) {
+            throw new IllegalArgumentException("calories cannot be less than 0");
+        }
+        List<FoodItem> calorieItem = foodItemRepository.findCaloriesMoreThanProtein(maxCalories);
+        if(calorieItem.isEmpty()) {
+            throw new RuntimeException("The item is empty");
+        }
+        return calorieItem;
+    }
+
 }

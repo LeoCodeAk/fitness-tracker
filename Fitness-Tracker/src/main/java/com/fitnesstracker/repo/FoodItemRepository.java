@@ -10,6 +10,7 @@ public interface FoodItemRepository {
     List<FoodItem> findAll();
     FoodItem findById(Long id);
     List<FoodItem> findByCaloriesLessThan(int maxCalories);
+    List<FoodItem> findCaloriesMoreThanProtein(int maxCalories);
 
 
 
