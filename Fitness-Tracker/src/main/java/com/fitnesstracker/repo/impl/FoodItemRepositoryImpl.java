@@ -34,4 +34,10 @@ public class FoodItemRepositoryImpl implements FoodItemRepository {
                 .setParameter("maxCalories", maxCalories)
                 .getResultList();
     }
+
+    public List<FoodItem> findCaloriesMoreThanProtein(int maxCalories) {
+        return entityManager.createQuery("SELECT f from FoodItem f where f.caloriesPer100g > :maxCalories", FoodItem.class)
+                .setParameter("maxCalories", maxCalories)
+                .getResultList();
+    }
 }

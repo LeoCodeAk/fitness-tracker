@@ -37,4 +37,28 @@ public class FoodItemController {
         FoodItem findItem = foodItemService.findFoodItemById(foodId);
         return  new ResponseEntity<>(findItem, HttpStatus.OK);
     }
+
+    @GetMapping("/find/low-calories/{maxCalories}")
+    public ResponseEntity<List<FoodItem>> findFoodItemBy100gCalories(@PathVariable int maxCalories) {
+        try {
+            List<FoodItem> item100gLessThanCalories = foodItemService.findCaloriesLessThanMaxCalories(maxCalories);
+            return new ResponseEntity<>(item100gLessThanCalories, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/find/low-protein/{maxCalories}")
+    public ResponseEntity<List<FoodItem>> findFoodItemLessThan100gProtein(@PathVariable int maxCalories) {
+        try {
+            List<FoodItem> findFoodMoreThan100gProtein = foodItemService.findCaloriesMoreThanProtein(maxCalories);
+            return new ResponseEntity<>(findFoodMoreThan100gProtein, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
